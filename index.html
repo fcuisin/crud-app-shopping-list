@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List</title>
+    <title>My Amazing Shopping List</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"
@@ -15,7 +15,9 @@
         <h1>My shopping list</h1>
         <p>What do I want to get bought today?</p>
         <form id="form">
-          <input type="text" id="input" placeholder="Pork, Beef, ..." />
+          <input type="text" id="name" placeholder="Ingredient" />
+          <input type="number" id="number" placeholder="How many?" />
+          <button id="form-save">Add</button>
         </form>
       </div>
 
@@ -23,14 +25,13 @@
       <table>
        <tr>
          <th>Item</th>
+         <th>Number</th>
+         <th scope="col">Actions</th>
        </tr>
        <tbody id="items">
        </tbody>
       </table>
-
-      <div class="list-todo">
-        <ul id="todo"></ul>
-      </div>
     </div>
   </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>
