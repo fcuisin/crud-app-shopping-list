@@ -9,7 +9,7 @@ const list = [
   }
 ]
 
-function fetchAllMovies(list) {
+function fetchAllItems(list) {
   const table = document.getElementById("items");
   const counter = document.getElementById("counter");
   let data = "";
@@ -20,10 +20,9 @@ function fetchAllMovies(list) {
       <td><button class="btn-modify" value="${index}">Modify</button></td>
     </tr>
 `
-
   });
 
   table.innerHTML += data;
 }
 
-fetchAllMovies(list);
+fetchAllItems(list);
