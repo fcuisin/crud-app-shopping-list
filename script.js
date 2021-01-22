@@ -1,13 +1,4 @@
-const list = [
-  {
-    name:"citrus",
-    number:3,
-  },
-  {
-    name:"pomelos",
-    number:1,
-  }
-]
+const list = []
 
 function fetchAllItems(list) {
   const table = document.getElementById("items");
@@ -21,8 +12,28 @@ function fetchAllItems(list) {
     </tr>
 `
   });
-
-  table.innerHTML += data;
+  table.innerHTML = data;
 }
 
-fetchAllItems(list);
+function createItem() {
+  event.preventDefault();
+  console.log(event);
+  const name = document.getElementById("name").value;
+  const number = document.getElementById("number").value;
+
+  if (name && (number > 0)) {
+    console.log(number);
+    const item = {
+      name: name,
+      number: number,
+    }
+
+    list.push(item);
+  }
+
+  return fetchAllItems(list);
+
+}
+
+const form = document.getElementById("form");
+form.addEventListener("submit", createItem);
