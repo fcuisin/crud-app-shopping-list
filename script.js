@@ -35,7 +35,14 @@ function createItem() {
       number: number,
     }
 
-    list.push(item);
+    if (document.getElementById("hidden-index").value.length > 0) {
+      list.splice(document.getElementById("hidden-index").value,1,item);
+      document.getElementById("form").reset();
+      document.getElementById("hidden-index").value = "";
+    } else {
+      list.push(item);
+      document.getElementById("form").reset();
+    }
   }
 
   return fetchAllItems(list);
@@ -46,6 +53,10 @@ function updateItem(index) {
   const item = list.find((m, i) => {
     return i == index;
   });
+
+  document.getElementById("name").value = item.name;
+  document.getElementById("number").value = item.number;
+  document.getElementById("hidden-index").value = index;
 }
 
 const form = document.getElementById("form");
