@@ -13,16 +13,23 @@ function fetchAllItems(list) {
 `
   });
   table.innerHTML = data;
+
+  const itemsDisplayed = document.querySelectorAll(".btn-modify");
+  itemsDisplayed.forEach( item => {
+
+    item.addEventListener("click", function() {
+      return updateItem(this.value);
+    });
+
+  });
 }
 
 function createItem() {
   event.preventDefault();
-  console.log(event);
   const name = document.getElementById("name").value;
   const number = document.getElementById("number").value;
 
   if (name && (number > 0)) {
-    console.log(number);
     const item = {
       name: name,
       number: number,
