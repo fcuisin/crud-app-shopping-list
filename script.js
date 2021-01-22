@@ -9,6 +9,7 @@ function fetchAllItems(list) {
       <td>${item.name}</td>
       <td>${item.number}</td>
       <td><button class="btn-modify" value="${index}">Modify</button></td>
+      <td><button class="btn-delete" value="${index}">Delete</button></td>
     </tr>
 `
   });
@@ -19,6 +20,15 @@ function fetchAllItems(list) {
 
     item.addEventListener("click", function() {
       return updateItem(this.value);
+    });
+
+  });
+
+  const itemsToDelete = document.querySelectorAll(".btn-delete");
+  itemsToDelete.forEach( item => {
+
+    item.addEventListener("click", function() {
+      return deleteItem(this.value);
     });
 
   });
@@ -57,6 +67,14 @@ function updateItem(index) {
   document.getElementById("name").value = item.name;
   document.getElementById("number").value = item.number;
   document.getElementById("hidden-index").value = index;
+}
+
+function deleteItem(index) {
+
+  delete list[index];
+
+  return fetchAllItems(list);
+
 }
 
 const form = document.getElementById("form");
