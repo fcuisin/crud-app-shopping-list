@@ -42,5 +42,11 @@ function createItem() {
 
 }
 
+function updateItem(index) {
+  const item = list.find((m, i) => {
+    return i == index;
+  });
+}
+
 const form = document.getElementById("form");
 form.addEventListener("submit", createItem);
