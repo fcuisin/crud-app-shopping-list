@@ -13,26 +13,50 @@ function fetchAllItems(list) {
 `
   });
   table.innerHTML = data;
+
+  const itemsDisplayed = document.querySelectorAll(".btn-modify");
+  itemsDisplayed.forEach( item => {
+
+    item.addEventListener("click", function() {
+      return updateItem(this.value);
+    });
+
+  });
 }
 
 function createItem() {
   event.preventDefault();
-  console.log(event);
   const name = document.getElementById("name").value;
   const number = document.getElementById("number").value;
 
   if (name && (number > 0)) {
-    console.log(number);
     const item = {
       name: name,
       number: number,
     }
 
-    list.push(item);
+    if (document.getElementById("hidden-index").value.length > 0) {
+      list.splice(document.getElementById("hidden-index").value,1,item);
+      document.getElementById("form").reset();
+      document.getElementById("hidden-index").value = "";
+    } else {
+      list.push(item);
+      document.getElementById("form").reset();
+    }
   }
 
   return fetchAllItems(list);
 
+}
+
+function updateItem(index) {
+  const item = list.find((m, i) => {
+    return i == index;
+  });
+
+  document.getElementById("name").value = item.name;
+  document.getElementById("number").value = item.number;
+  document.getElementById("hidden-index").value = index;
 }
 
 const form = document.getElementById("form");
