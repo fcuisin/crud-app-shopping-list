@@ -1,15 +1,6 @@
-const list = [
-  {
-    name:"citrus",
-    number:3,
-  },
-  {
-    name:"pomelos",
-    number:1,
-  }
-]
+const list = []
 
-function fetchAllMovies(list) {
+function fetchAllItems(list) {
   const table = document.getElementById("items");
   const counter = document.getElementById("counter");
   let data = "";
@@ -20,10 +11,29 @@ function fetchAllMovies(list) {
       <td><button class="btn-modify" value="${index}">Modify</button></td>
     </tr>
 `
-
   });
-
-  table.innerHTML += data;
+  table.innerHTML = data;
 }
 
-fetchAllMovies(list);
+function createItem() {
+  event.preventDefault();
+  console.log(event);
+  const name = document.getElementById("name").value;
+  const number = document.getElementById("number").value;
+
+  if (name && (number > 0)) {
+    console.log(number);
+    const item = {
+      name: name,
+      number: number,
+    }
+
+    list.push(item);
+  }
+
+  return fetchAllItems(list);
+
+}
+
+const form = document.getElementById("form");
+form.addEventListener("submit", createItem);
